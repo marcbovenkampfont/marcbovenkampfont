@@ -1,0 +1,41 @@
+.skills-category {
+  margin-bottom: 40px;
+
+  h3 {
+    color: var(--primary-color);
+    font-size: 1.55em;
+    margin-bottom: 22px;
+    border-left: 3px solid var(--secondary-color);
+    padding-left: 16px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    font-family: 'Poppins', sans-serif;
+  }
+}
+
+.skills-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.skill-item {
+  background: white;
+  color: var(--text-color);
+  padding: 11px 22px;
+  border-radius: 4px;
+  font-weight: 600;
+  box-shadow: var(--card-shadow);
+  transition: var(--transition);
+  border: 1px solid #e5e7eb;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95em;
+  letter-spacing: 0.01em;
+
+  &:hover {
+    border-color: var(--secondary-color);
+    color: var(--secondary-color);
+    box-shadow: 0 3px 10px rgba(37, 99, 235, 0.15);
+    transform: translateY(-2px);
+  }
+}

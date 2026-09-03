@@ -1,0 +1,60 @@
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.08em;
+  font-family: 'Inter', sans-serif;
+  background: white;
+  border: 2px solid #e5e7eb;
+  padding: 14px 24px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+
+  strong {
+    color: var(--primary-color);
+    font-weight: 600;
+  }
+
+  span {
+    color: #4b5563;
+    font-weight: 400;
+  }
+
+  &:hover {
+    border-color: var(--secondary-color);
+    background: #f8fafc;
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.15);
+    transform: translateY(-2px);
+
+    strong {
+      color: var(--secondary-color);
+    }
+
+    span {
+      color: var(--secondary-color);
+    }
+  }
+
+  &:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 6px rgba(37, 99, 235, 0.2);
+  }
+
+  &:focus {
+    outline: none;
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+  }
+}
+
+@media (max-width: 768px) {
+  .contact-item {
+    font-size: 1em;
+    padding: 12px 20px;
+    width: 100%;
+    justify-content: flex-start;
+  }
+}

@@ -1,0 +1,142 @@
+.project-card {
+  background: white;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: var(--card-shadow);
+  transition: var(--transition);
+  border: 1px solid #e5e7eb;
+  display: flex;
+  flex-direction: column;
+
+  &:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+    border-color: var(--accent-color);
+  }
+}
+
+.project-header {
+  position: relative;
+  width: 100%;
+  height: 220px;
+  // background: linear-gradient(135deg, var(--secondary-color) 0%, var(--accent-color) 100%);
+  color: white;
+  font-size: 2.5em;
+  font-weight: 600;
+  overflow: hidden;
+
+  .project-image-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .project-bg-blur {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      filter: blur(15px) brightness(0.5);
+      transform: scale(1.1);
+      z-index: 1;
+    }
+  
+    img {
+      position: relative;
+      height: 90%;
+      max-width: 100%;
+      object-fit: contain;
+      z-index: 2;
+      border-radius: 6px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    }
+  }
+
+  .project-fallback {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    position: relative;
+  }
+
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.15) 100%);
+  }
+
+  span {
+    position: relative;
+    z-index: 1;
+  }
+}
+
+.project-content {
+  padding: 25px;
+}
+
+.project-title {
+  color: var(--primary-color);
+  font-size: 1.55em;
+  margin-bottom: 16px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  font-family: 'Poppins', sans-serif;
+  line-height: 1.3;
+}
+
+.project-description {
+  color: #4b5563;
+  font-size: 0.98em;
+  line-height: 1.75;
+  margin-bottom: 20px;
+  font-weight: 400;
+}
+
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 20px;
+
+  .tag {
+    background: var(--light-bg);
+    color: var(--text-color);
+    padding: 6px 14px;
+    border-radius: 4px;
+    font-size: 0.82em;
+    font-weight: 600;
+    border: 1px solid #d1d5db;
+    font-family: 'Inter', sans-serif;
+    letter-spacing: 0.01em;
+  }
+}
+
+.project-details {
+  border-top: 1px solid #e0e0e0;
+  padding-top: 15px;
+  font-size: 0.95em;
+  color: #4b5563;
+  line-height: 1.6;
+
+  p {
+    margin: 6px 0;
+    font-weight: 400;
+  }
+
+  strong {
+    color: var(--secondary-color);
+    font-weight: 600;
+  }
+}
