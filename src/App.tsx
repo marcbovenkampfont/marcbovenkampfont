@@ -9,8 +9,7 @@ import Habilidades from '@/sections/Skills/Habilidades'
 import Contacto from '@/sections/Contact/Contacto'
 import Footer from '@/components/Footer/Footer'
 import './styles/App.scss'
-
-type Section = 'inicio' | 'proyectos' | 'experiencia' | 'habilidades' | 'contacto'
+import type { Section } from '@/types/navigation'
 
 function App() {
   const [activeSection, setActiveSection] = useState<Section>('inicio')

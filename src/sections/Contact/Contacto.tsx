@@ -1,7 +1,10 @@
 import ContactItem from './ContactItem'
 import './Contacto.scss'
+import { useLanguage } from '@/context/LanguageContext'
 
 const Contacto = () => {
+  const { t } = useLanguage()
+
   const handleEmail = () => {
     window.location.href = 'mailto:marc@bovenkamp.es'
   }
@@ -24,38 +27,32 @@ const Contacto = () => {
 
   return (
     <div className="section intro-section">
-      <h2>Contacto</h2>
+      <h2>{t.sections.contacto.title}</h2>
       <p>
-        Abierto a colaboraciones en proyectos de desarrollo Frontend y Full Stack, así como consultoría técnica.
-        Si tienes una idea o un reto tecnológico en mente, hablemos.
+        {t.sections.contacto.intro}
       </p>
       <div className="contact-info">
         <ContactItem
-          icon="📧"
           label="Email"
           value="marc@bovenkamp.es"
           action={handleEmail}
         />
         <ContactItem
-          icon="📱"
-          label="Teléfono (ES)"
+          label={t.sections.contacto.phoneEs}
           value="+34 663 450 646"
           action={handlePhoneES}
         />
         <ContactItem
-          icon="📱"
-          label="Teléfono (MT)"
+          label={t.sections.contacto.phoneMt}
           value="+356 99 49 38 13"
           action={handlePhoneMT}
         />
         <ContactItem
-          icon="💼"
           label="LinkedIn"
           value="Marc van de Bovenkamp Font"
           action={handleLinkedIn}
         />
         <ContactItem
-          icon="🐱"
           label="GitHub"
           value="github.com/marcbovenkampfont"
           action={handleGitHub}

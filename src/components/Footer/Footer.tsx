@@ -1,10 +1,13 @@
 import './Footer.scss'
+import { useLanguage } from '@/context/LanguageContext'
 
 const Footer = () => {
+  const { t } = useLanguage()
+
   return (
     <footer>
-      <p>&copy; 2026 Marc van de Bovenkamp Font. Todos los derechos reservados.</p>
-      <p className="footer-subtitle">Portfolio Profesional - Desarrollador Frontend & Full Stack</p>
+      <p>&copy; 2026 Marc van de Bovenkamp Font. {t.footer.rights}</p>
+      <p className="footer-subtitle">{t.footer.subtitle}</p>
     </footer>
   )
 }

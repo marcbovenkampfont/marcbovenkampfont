@@ -1,7 +1,8 @@
 import { useState } from 'react'
 import './ProjectCard.scss'
-import type { Project } from '@/sections/Projects/Proyectos'
-import { SKILLS } from '@/util/skills';
+import type { Project } from '@/types/content'
+import { useLanguage } from '@/context/LanguageContext'
+import { getSkills } from '@/util/skills'
 
 interface ProjectCardProps {
   project: Project
@@ -10,6 +11,8 @@ interface ProjectCardProps {
 const images = import.meta.glob<{ default: string }>('../../assets/images/*', { eager: true });
 
 const ProjectCard = ({ project }: ProjectCardProps) => {
+  const { language, t } = useLanguage()
+  const skills = getSkills(language)
   const imagePath = images[`../../assets/images/${project.image}`]?.default;
   const [imageError, setImageError] = useState(imagePath == undefined);
 
@@ -40,19 +43,19 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
         <div className="project-tags">
           {project.tags.map((tag) => (
             <span key={tag} className="tag">
-              {SKILLS.find(skill => skill.id === tag)?.title}
+              {skills.find((skill) => skill.id === tag)?.title}
             </span>
           ))}
         </div>
         <div className="project-details">
           <p>
-            <strong>Rol:</strong> {project.role}
+            <strong>{t.projectCard.role}:</strong> {project.role}
           </p>
           <p>
-            <strong>Vínculo:</strong> {project.vinculo}
+            <strong>{t.projectCard.vinculo}:</strong> {project.vinculo}
           </p>
           {project.achievements && <p>
-            <strong>Logros:</strong> {project.achievements}
+            <strong>{t.projectCard.achievements}:</strong> {project.achievements}
           </p>}
         </div>
       </div>

@@ -1,6 +1,6 @@
 import './Navigation.scss'
-
-type Section = 'inicio' | 'proyectos' | 'experiencia' | 'habilidades' | 'contacto'
+import { useLanguage } from '@/context/LanguageContext'
+import type { Section } from '@/types/navigation'
 
 interface NavigationProps {
   activeSection: Section
@@ -8,25 +8,45 @@ interface NavigationProps {
 }
 
 const Navigation = ({ activeSection, onSectionChange }: NavigationProps) => {
+  const { language, setLanguage, t } = useLanguage()
+
   const sections: { id: Section; label: string }[] = [
-    { id: 'inicio', label: 'Inicio' },
-    { id: 'proyectos', label: 'Proyectos' },
-    { id: 'experiencia', label: 'Experiencia' },
-    { id: 'habilidades', label: 'Habilidades' },
-    { id: 'contacto', label: 'Contacto' },
+    { id: 'inicio', label: t.navigation.inicio },
+    { id: 'proyectos', label: t.navigation.proyectos },
+    { id: 'experiencia', label: t.navigation.experiencia },
+    { id: 'habilidades', label: t.navigation.habilidades },
+    { id: 'contacto', label: t.navigation.contacto },
   ]
 
   return (
-    <nav>
-      {sections.map((section) => (
+    <nav className="main-nav">
+      <div className="nav-links">
+        {sections.map((section) => (
+          <button
+            key={section.id}
+            className={`nav-btn ${activeSection === section.id ? 'active' : ''}`}
+            onClick={() => onSectionChange(section.id)}
+          >
+            {section.label}
+          </button>
+        ))}
+      </div>
+      <div className="language-switcher" role="group" aria-label={t.languageSwitcher.ariaLabel}>
         <button
-          key={section.id}
-          className={`nav-btn ${activeSection === section.id ? 'active' : ''}`}
-          onClick={() => onSectionChange(section.id)}
+          className={`lang-btn es ${language === 'es' ? 'active' : ''}`}
+          onClick={() => setLanguage('es')}
+          aria-pressed={language === 'es'}
         >
-          {section.label}
+          ES
         </button>
-      ))}
+        <button
+          className={`lang-btn en ${language === 'en' ? 'active' : ''}`}
+          onClick={() => setLanguage('en')}
+          aria-pressed={language === 'en'}
+        >
+          EN
+        </button>
+      </div>
     </nav>
   )
 }

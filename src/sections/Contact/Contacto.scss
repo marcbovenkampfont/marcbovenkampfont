@@ -1,15 +1,29 @@
 .contact-info {
-  display: flex;
+  display: grid;
   justify-content: center;
   gap: 20px;
-  flex-wrap: wrap;
+  grid-template-columns: repeat(2, 1fr);
+  /* flex-wrap: wrap; */
   margin-top: 30px;
+
+  > :nth-child(odd) {
+    justify-self: end;
+  }
+
+  > :nth-child(even) {
+    justify-self: start;
+  }
+
+  > :last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+    justify-self: center;
+  }
 }
 
 @media (max-width: 768px) {
   .contact-info {
-    flex-direction: column;
-    align-items: stretch;
+    display: grid;
+    grid-template-columns: 1fr;
     gap: 15px;
   }
 }

@@ -1,5 +1,5 @@
 import './TimelineItem.scss'
-import type { Experience } from "@/sections/Experience/Experiencia"
+import type { Experience } from '@/types/content'
 
 interface TimelineItemProps {
   experience: Experience
@@ -20,16 +20,16 @@ const TimelineItem = ({ experience, index, projects }: TimelineItemProps) => {
         </p>
         {projects && projects.length > 0 ? (
           <>
-            {projects.map((project, idx) => (
-              <>
-                <p key={idx + '-title'}>
+            {projects.map((project) => (
+              <div key={project.id}>
+                <p>
                   <strong>{project.projectName}</strong>
                 </p>
                 <h3>{project.title}</h3>
-                <p key={idx + '-desc'}>
+                <p>
                   {project.description}
                 </p>
-              </>
+              </div>
             ))}
           </>
         ) : (

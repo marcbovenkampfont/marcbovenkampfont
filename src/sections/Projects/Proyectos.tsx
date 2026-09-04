@@ -1,23 +1,15 @@
 import ProjectCard from '@/components/ProjectCard/ProjectCard'
 import './Proyectos.scss'
-
-export interface Project {
-  id: string
-  title: string
-  description: string
-  image: string
-  fallbackIcon: string
-  tags: string[]
-  role: string
-  vinculo: string
-  achievements?: string
-}
-import projects from '@/util/projects'
+import { useLanguage } from '@/context/LanguageContext'
+import { getProjects } from '@/util/projects'
 
 const Proyectos = () => {
+  const { language, t } = useLanguage()
+  const projects = getProjects(language)
+
   return (
     <div className="section proyectos-section">
-      <h2>Proyectos Destacados</h2>
+      <h2>{t.sections.proyectos.title}</h2>
       <div className="projects-grid">
         {projects.map((project) => (
           <ProjectCard key={project.id} project={project} />

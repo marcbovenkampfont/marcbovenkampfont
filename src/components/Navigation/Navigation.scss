@@ -1,4 +1,5 @@
-nav {
+.main-nav {
+  position: relative;
   background: white;
   padding: 0;
   display: flex;
@@ -6,6 +7,13 @@ nav {
   gap: 0;
   flex-wrap: wrap;
   border-bottom: 1px solid #e5e7eb;
+
+  .nav-links {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    flex: 1;
+  }
 
   .nav-btn {
     background: transparent;
@@ -32,19 +40,78 @@ nav {
       border-bottom-color: var(--secondary-color);
     }
   }
+
+  .language-switcher {
+    position: absolute;
+    top: 0;
+    right: 10px;
+    transform: translateY(50%);
+    display: flex;
+  }
+
+  .lang-btn {
+    border: 1px solid #d1d5db;
+    background: white;
+    color: var(--text-color);
+    padding: 6px 10px;
+    cursor: pointer;
+    font-size: 0.8em;
+    font-weight: 600;
+    transition: all 0.4s ease-in-out;
+
+    &.es {
+      border-radius: 4px 0 0 4px;
+    }
+
+    &.en {
+      border-radius: 0 4px 4px 0;
+    }
+
+    &:hover {
+      border-color: var(--accent-color);
+      color: var(--primary-color);
+    }
+
+    &.active {
+      background: var(--primary-color);
+      border-color: var(--primary-color);
+      color: white;
+    }
+  }
 }
 
 @media (max-width: 768px) {
-  nav {
+  .main-nav {
+    padding-right: 12px;
+
     .nav-btn {
       padding: 16px 20px;
       font-size: 0.9em;
+    }
+
+    .lang-btn {
+      padding: 6px 8px;
+      font-size: 0.75em;
     }
   }
 }
 
 @media (max-width: 600px) {
-  nav {
+  .main-nav {
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-right: 0;
+
+    .nav-links {
+      order: 2;
+      width: 100%;
+    }
+
+    .language-switcher {
+      order: 1;
+      padding: 10px 0 2px;
+    }
+
     .nav-btn {
       padding: 14px 16px;
       font-size: 0.85em;

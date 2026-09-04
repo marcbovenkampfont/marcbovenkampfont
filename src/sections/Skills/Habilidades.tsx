@@ -1,6 +1,8 @@
 import SkillsCategory from '@/components/SkillsCategory/SkillsCategory'
 import './Habilidades.scss'
-import { SKILLS } from '@/util/skills'
+import { getSkills } from '@/util/skills'
+import { useLanguage } from '@/context/LanguageContext'
+import type { SkillGroup } from '@/types/content'
 
 export interface SkillCategory {
   id: string
@@ -8,21 +10,24 @@ export interface SkillCategory {
   skills: string[]
 }
 
-export interface Skill {
-  id: string
-  title: string
-  group: 'Frontend' | 'Backend & Data' | 'Herramientas & DevOps'
-}
-
 const Habilidades = () => {
-  const skillCategories = SKILLS.reduce((skillsCategory, skill) => {
+  const { language, t } = useLanguage()
+  const skills = getSkills(language)
+
+  const groupLabels: Record<SkillGroup, string> = {
+    frontend: t.sections.habilidades.groups.frontend,
+    backendData: t.sections.habilidades.groups.backendData,
+    toolsDevops: t.sections.habilidades.groups.toolsDevops,
+  }
+
+  const skillCategories = skills.reduce((skillsCategory, skill) => {
     const category = skillsCategory.find((c) => c.id === skill.group)
     if (category) {
       category.skills.push(skill.title)
     } else {
       skillsCategory.push({
         id: skill.group,
-        title: skill.group,
+        title: groupLabels[skill.group],
         skills: [skill.title]
       })
     }
@@ -31,7 +36,7 @@ const Habilidades = () => {
 
   return (
     <div className="section habilidades-section">
-      <h2>Habilidades Técnicas</h2>
+      <h2>{t.sections.habilidades.title}</h2>
       <div className="skills-section">
         {skillCategories.map((category) => (
           <SkillsCategory key={category.id} category={category} />
