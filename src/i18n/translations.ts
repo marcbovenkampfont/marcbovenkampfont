@@ -103,7 +103,7 @@ export const translations: Record<Language, AppTranslations> = {
       achievements: 'Logros',
     },
     footer: {
-      rights: 'Todos los derechos están reservados.',
+      rights: 'Todos los derechos reservados.',
       subtitle: 'Portfolio Profesional - Desarrollador Frontend y Full Stack',
     },
   },
